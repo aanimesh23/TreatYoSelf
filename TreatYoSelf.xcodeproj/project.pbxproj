@@ -3,19 +3,20 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		156C985706B22DCD587E4983 /* Pods_TreatYoSelf.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E591091FBE51876DED7EBD7 /* Pods_TreatYoSelf.framework */; };
 		2252A84C23EDEFAA004BAB19 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2252A84B23EDEFAA004BAB19 /* AppDelegate.swift */; };
 		2252A84E23EDEFAA004BAB19 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2252A84D23EDEFAA004BAB19 /* SceneDelegate.swift */; };
-		2252A85023EDEFAA004BAB19 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2252A84F23EDEFAA004BAB19 /* ViewController.swift */; };
 		2252A85323EDEFAA004BAB19 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2252A85123EDEFAA004BAB19 /* Main.storyboard */; };
 		2252A85523EDEFAD004BAB19 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2252A85423EDEFAD004BAB19 /* Assets.xcassets */; };
 		2252A85823EDEFAD004BAB19 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2252A85623EDEFAD004BAB19 /* LaunchScreen.storyboard */; };
 		2252A86323EDEFAD004BAB19 /* TreatYoSelfTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2252A86223EDEFAD004BAB19 /* TreatYoSelfTests.swift */; };
 		2252A86E23EDEFAD004BAB19 /* TreatYoSelfUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2252A86D23EDEFAD004BAB19 /* TreatYoSelfUITests.swift */; };
+		228433CE23F4ABF60039677C /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 228433CD23F4ABF60039677C /* HealthKit.framework */; };
+		228433D023F4AD0D0039677C /* FoodJournalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 228433CF23F4AD0D0039677C /* FoodJournalViewController.swift */; };
 		361E0182FC543276CC3A807D /* Pods_TreatYoSelf_TreatYoSelfUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D47C0BC66E9A0F7AC7A14392 /* Pods_TreatYoSelf_TreatYoSelfUITests.framework */; };
 		BA978AFCAFF85E36BA4825E0 /* Pods_TreatYoSelfTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2272787E59ADFBDD2443B9DC /* Pods_TreatYoSelfTests.framework */; };
 /* End PBXBuildFile section */
@@ -43,7 +44,6 @@
 		2252A84823EDEFAA004BAB19 /* TreatYoSelf.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TreatYoSelf.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2252A84B23EDEFAA004BAB19 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2252A84D23EDEFAA004BAB19 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		2252A84F23EDEFAA004BAB19 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		2252A85223EDEFAA004BAB19 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		2252A85423EDEFAD004BAB19 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2252A85723EDEFAD004BAB19 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -55,6 +55,8 @@
 		2252A86D23EDEFAD004BAB19 /* TreatYoSelfUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TreatYoSelfUITests.swift; sourceTree = "<group>"; };
 		2252A86F23EDEFAD004BAB19 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2272787E59ADFBDD2443B9DC /* Pods_TreatYoSelfTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TreatYoSelfTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		228433CD23F4ABF60039677C /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = System/Library/Frameworks/HealthKit.framework; sourceTree = SDKROOT; };
+		228433CF23F4AD0D0039677C /* FoodJournalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodJournalViewController.swift; sourceTree = "<group>"; };
 		29A953B3950C3A3EE0A7FCD1 /* Pods-TreatYoSelfTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TreatYoSelfTests.release.xcconfig"; path = "Target Support Files/Pods-TreatYoSelfTests/Pods-TreatYoSelfTests.release.xcconfig"; sourceTree = "<group>"; };
 		6B0DC1C195EE0ED3079E0C77 /* Pods-TreatYoSelf-TreatYoSelfUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TreatYoSelf-TreatYoSelfUITests.debug.xcconfig"; path = "Target Support Files/Pods-TreatYoSelf-TreatYoSelfUITests/Pods-TreatYoSelf-TreatYoSelfUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		865B93E9719AE980B00FAB71 /* Pods-TreatYoSelfTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TreatYoSelfTests.debug.xcconfig"; path = "Target Support Files/Pods-TreatYoSelfTests/Pods-TreatYoSelfTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -69,6 +71,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				156C985706B22DCD587E4983 /* Pods_TreatYoSelf.framework in Frameworks */,
+				228433CE23F4ABF60039677C /* HealthKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -118,11 +121,11 @@
 			children = (
 				2252A84B23EDEFAA004BAB19 /* AppDelegate.swift */,
 				2252A84D23EDEFAA004BAB19 /* SceneDelegate.swift */,
-				2252A84F23EDEFAA004BAB19 /* ViewController.swift */,
 				2252A85123EDEFAA004BAB19 /* Main.storyboard */,
 				2252A85423EDEFAD004BAB19 /* Assets.xcassets */,
 				2252A85623EDEFAD004BAB19 /* LaunchScreen.storyboard */,
 				2252A85923EDEFAD004BAB19 /* Info.plist */,
+				228433CF23F4AD0D0039677C /* FoodJournalViewController.swift */,
 			);
 			path = TreatYoSelf;
 			sourceTree = "<group>";
@@ -155,13 +158,13 @@
 				865B93E9719AE980B00FAB71 /* Pods-TreatYoSelfTests.debug.xcconfig */,
 				29A953B3950C3A3EE0A7FCD1 /* Pods-TreatYoSelfTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
 		E4C5A905B65F52BB55558226 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				228433CD23F4ABF60039677C /* HealthKit.framework */,
 				8E591091FBE51876DED7EBD7 /* Pods_TreatYoSelf.framework */,
 				D47C0BC66E9A0F7AC7A14392 /* Pods_TreatYoSelf_TreatYoSelfUITests.framework */,
 				2272787E59ADFBDD2443B9DC /* Pods_TreatYoSelfTests.framework */,
@@ -408,8 +411,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2252A85023EDEFAA004BAB19 /* ViewController.swift in Sources */,
 				2252A84C23EDEFAA004BAB19 /* AppDelegate.swift in Sources */,
+				228433D023F4AD0D0039677C /* FoodJournalViewController.swift in Sources */,
 				2252A84E23EDEFAA004BAB19 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -584,6 +587,7 @@
 			baseConfigurationReference = D4E71A48764838BD222E21F3 /* Pods-TreatYoSelf.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = TreatYoSelf/TreatYoSelf.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = R3U435LN7W;
 				INFOPLIST_FILE = TreatYoSelf/Info.plist;
@@ -603,6 +607,7 @@
 			baseConfigurationReference = 0181EE3C4B26AF32C8091F43 /* Pods-TreatYoSelf.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = TreatYoSelf/TreatYoSelf.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = R3U435LN7W;
 				INFOPLIST_FILE = TreatYoSelf/Info.plist;
