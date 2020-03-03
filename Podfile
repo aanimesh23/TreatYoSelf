@@ -7,7 +7,7 @@ target 'TreatYoSelf' do
 
   # Pods for TreatYoSelf
   pod "AlamofireImage"	
-
+  pod "Parse"
 
   target 'TreatYoSelfTests' do
     inherit! :search_paths
