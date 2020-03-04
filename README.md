@@ -11,7 +11,6 @@
 Our project is designed to help users that require an additional push to reach their health goals. Whether the user is trying to gain or lose weight, our application will make food recommendations based on the goal each user sets. By consistently reminding our users of the goal they set and by providing food options that coincide with those goals, our target group of UCI college students should see improvements in their dietary regime. Each user should realize that the application is tailored to them and have the urge to continue using it to further their health goals. We want the process of making food recommendations to be as simple as possible and this is what we believe will bring users back.
 
 ### App Evaluation
-[Evaluation of your app across the following attributes]
 - **Category:** Health / Recommendations Engine
 - **Mobile:** iPhone App Only
 - **Story:** Take in user data stream to provide users with Personalized and Contextual food recommendations.
@@ -20,7 +19,7 @@ Our project is designed to help users that require an additional push to reach t
 
 ## Product Spec
 
-### 1. User Stories (Required and Optional)
+### 1. User Stories
 
 **Required Must-have Stories**
 
