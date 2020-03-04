@@ -119,13 +119,11 @@
 		2252A84A23EDEFAA004BAB19 /* TreatYoSelf */ = {
 			isa = PBXGroup;
 			children = (
-				2252A84B23EDEFAA004BAB19 /* AppDelegate.swift */,
-				2252A84D23EDEFAA004BAB19 /* SceneDelegate.swift */,
-				2252A85123EDEFAA004BAB19 /* Main.storyboard */,
+				22E6B880240F72C100EDFE05 /* Delegates */,
+				22E6B87F240F72A200EDFE05 /* StoryBoards */,
+				22E6B87E240F727F00EDFE05 /* ViewControllers */,
 				2252A85423EDEFAD004BAB19 /* Assets.xcassets */,
-				2252A85623EDEFAD004BAB19 /* LaunchScreen.storyboard */,
 				2252A85923EDEFAD004BAB19 /* Info.plist */,
-				228433CF23F4AD0D0039677C /* FoodJournalViewController.swift */,
 			);
 			path = TreatYoSelf;
 			sourceTree = "<group>";
@@ -146,6 +144,32 @@
 				2252A86F23EDEFAD004BAB19 /* Info.plist */,
 			);
 			path = TreatYoSelfUITests;
+			sourceTree = "<group>";
+		};
+		22E6B87E240F727F00EDFE05 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				228433CF23F4AD0D0039677C /* FoodJournalViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		22E6B87F240F72A200EDFE05 /* StoryBoards */ = {
+			isa = PBXGroup;
+			children = (
+				2252A85123EDEFAA004BAB19 /* Main.storyboard */,
+				2252A85623EDEFAD004BAB19 /* LaunchScreen.storyboard */,
+			);
+			path = StoryBoards;
+			sourceTree = "<group>";
+		};
+		22E6B880240F72C100EDFE05 /* Delegates */ = {
+			isa = PBXGroup;
+			children = (
+				2252A84D23EDEFAA004BAB19 /* SceneDelegate.swift */,
+				2252A84B23EDEFAA004BAB19 /* AppDelegate.swift */,
+			);
+			path = Delegates;
 			sourceTree = "<group>";
 		};
 		C767BAAF539664A93F309436 /* Pods */ = {
