@@ -1,5 +1,5 @@
 //
-//  LoginViewController.swift
+//  SignUpViewController.swift
 //  TreatYoSelf
 //
 //  Created by Animesh Agrawal on 3/6/20.
@@ -8,22 +8,15 @@
 
 import UIKit
 
-class LoginViewController: UIViewController {
+class SignUpViewController: UIViewController {
 
-    @IBOutlet weak var loginButton: UIButton!
-    @IBOutlet weak var passwordTextField: UITextField!
-    @IBOutlet weak var emailTextField: UITextField!
     override func viewDidLoad() {
         super.viewDidLoad()
+
         // Do any additional setup after loading the view.
-        
-        
     }
     
-    @IBAction func onLogin(_ sender: Any) {
-        performSegue(withIdentifier: "loginSegue", sender: nil)
-    }
-    
+
     /*
     // MARK: - Navigation
 
