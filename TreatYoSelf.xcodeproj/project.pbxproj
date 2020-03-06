@@ -17,6 +17,7 @@
 		2252A86E23EDEFAD004BAB19 /* TreatYoSelfUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2252A86D23EDEFAD004BAB19 /* TreatYoSelfUITests.swift */; };
 		228433CE23F4ABF60039677C /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 228433CD23F4ABF60039677C /* HealthKit.framework */; };
 		228433D023F4AD0D0039677C /* FoodJournalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 228433CF23F4AD0D0039677C /* FoodJournalViewController.swift */; };
+		22B1CEA72412D3BB00A99CA4 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B1CEA62412D3BB00A99CA4 /* LoginViewController.swift */; };
 		361E0182FC543276CC3A807D /* Pods_TreatYoSelf_TreatYoSelfUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D47C0BC66E9A0F7AC7A14392 /* Pods_TreatYoSelf_TreatYoSelfUITests.framework */; };
 		BA978AFCAFF85E36BA4825E0 /* Pods_TreatYoSelfTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2272787E59ADFBDD2443B9DC /* Pods_TreatYoSelfTests.framework */; };
 /* End PBXBuildFile section */
@@ -57,6 +58,7 @@
 		2272787E59ADFBDD2443B9DC /* Pods_TreatYoSelfTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TreatYoSelfTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		228433CD23F4ABF60039677C /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = System/Library/Frameworks/HealthKit.framework; sourceTree = SDKROOT; };
 		228433CF23F4AD0D0039677C /* FoodJournalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodJournalViewController.swift; sourceTree = "<group>"; };
+		22B1CEA62412D3BB00A99CA4 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		29A953B3950C3A3EE0A7FCD1 /* Pods-TreatYoSelfTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TreatYoSelfTests.release.xcconfig"; path = "Target Support Files/Pods-TreatYoSelfTests/Pods-TreatYoSelfTests.release.xcconfig"; sourceTree = "<group>"; };
 		6B0DC1C195EE0ED3079E0C77 /* Pods-TreatYoSelf-TreatYoSelfUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TreatYoSelf-TreatYoSelfUITests.debug.xcconfig"; path = "Target Support Files/Pods-TreatYoSelf-TreatYoSelfUITests/Pods-TreatYoSelf-TreatYoSelfUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		865B93E9719AE980B00FAB71 /* Pods-TreatYoSelfTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TreatYoSelfTests.debug.xcconfig"; path = "Target Support Files/Pods-TreatYoSelfTests/Pods-TreatYoSelfTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -150,6 +152,7 @@
 			isa = PBXGroup;
 			children = (
 				228433CF23F4AD0D0039677C /* FoodJournalViewController.swift */,
+				22B1CEA62412D3BB00A99CA4 /* LoginViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -435,6 +438,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				22B1CEA72412D3BB00A99CA4 /* LoginViewController.swift in Sources */,
 				2252A84C23EDEFAA004BAB19 /* AppDelegate.swift in Sources */,
 				228433D023F4AD0D0039677C /* FoodJournalViewController.swift in Sources */,
 				2252A84E23EDEFAA004BAB19 /* SceneDelegate.swift in Sources */,

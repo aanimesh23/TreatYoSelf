@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="sSX-R8-5lE">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="VYl-Pv-O0g">
     <device id="retina5_5" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
@@ -232,10 +232,10 @@
             </objects>
             <point key="canvasLocation" x="3323.1884057971015" y="-704.34782608695662"/>
         </scene>
-        <!--View Controller-->
+        <!--Login View Controller-->
         <scene sceneID="wbl-Rd-0AR">
             <objects>
-                <viewController id="sSX-R8-5lE" sceneMemberID="viewController">
+                <viewController id="sSX-R8-5lE" customClass="LoginViewController" customModule="TreatYoSelf" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="nst-75-47W">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -286,10 +286,19 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qMh-eP-9r4">
-                                <rect key="frame" x="171.66666666666666" y="493" width="71" height="39"/>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qMh-eP-9r4">
+                                <rect key="frame" x="146" y="493" width="122" height="51"/>
+                                <color key="backgroundColor" red="0.078431372550000003" green="0.090196078430000007" blue="0.1019607843" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
                                 <state key="normal" title="Sign In"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="onLogin:" destination="sSX-R8-5lE" eventType="touchUpInside" id="6qp-wg-anO"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -317,7 +326,10 @@
                         <viewLayoutGuide key="safeArea" id="s44-b4-sGa"/>
                     </view>
                     <connections>
-                        <segue destination="qDK-Jq-xMD" kind="presentation" modalPresentationStyle="fullScreen" modalTransitionStyle="coverVertical" id="sBO-kp-fgp"/>
+                        <outlet property="emailTextField" destination="Hyi-Yt-S5T" id="qtc-TB-2Ke"/>
+                        <outlet property="loginButton" destination="qMh-eP-9r4" id="5po-Jw-2mo"/>
+                        <outlet property="passwordTextField" destination="MjB-WZ-FOD" id="aAj-pI-Ui2"/>
+                        <segue destination="qDK-Jq-xMD" kind="presentation" identifier="loginSegue" modalPresentationStyle="fullScreen" modalTransitionStyle="coverVertical" id="sBO-kp-fgp"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kvB-Vh-ija" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -438,11 +450,6 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xlp-zY-KQ2">
-                                <rect key="frame" x="184" y="661" width="46" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button"/>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OAB-HX-nYL">
                                 <rect key="frame" x="20" y="20" width="27" height="22"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -463,12 +470,18 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                             </textField>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xlp-zY-KQ2">
+                                <rect key="frame" x="175" y="664" width="76" height="39"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
+                                <state key="normal" title="SignUp"/>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="MtS-By-Vwi"/>
                     </view>
                     <connections>
-                        <segue destination="qDK-Jq-xMD" kind="presentation" modalPresentationStyle="fullScreen" modalTransitionStyle="coverVertical" id="UvZ-pN-d4k"/>
+                        <segue destination="qDK-Jq-xMD" kind="presentation" identifier="signupSegue" modalPresentationStyle="fullScreen" modalTransitionStyle="coverVertical" id="UvZ-pN-d4k"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="90T-rA-75m" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -531,10 +544,10 @@
             </objects>
             <point key="canvasLocation" x="720.28985507246387" y="-42.391304347826093"/>
         </scene>
-        <!--View Controller-->
+        <!--LoginView-->
         <scene sceneID="rkr-3z-mCc">
             <objects>
-                <viewController id="VYl-Pv-O0g" sceneMemberID="viewController">
+                <viewController title="LoginView" id="VYl-Pv-O0g" customClass="LoginViewController" customModule="TreatYoSelf" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="dew-OY-gH8">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -598,6 +611,7 @@
         <image name="square.and.pencil" catalog="system" width="64" height="58"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="UvZ-pN-d4k"/>
+        <segue reference="sVK-EY-GqH"/>
+        <segue reference="sBO-kp-fgp"/>
     </inferredMetricsTieBreakers>
 </document>
