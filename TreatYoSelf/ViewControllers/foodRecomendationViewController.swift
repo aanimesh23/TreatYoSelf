@@ -7,16 +7,33 @@
 //
 
 import UIKit
+import HealthKit
+import MapKit
 
-class foodRecomendationViewController: UIViewController {
-
+class foodRecomendationViewController: UIViewController, CLLocationManagerDelegate {
+    var locationManager = CLLocationManager()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        //location info
+        self.locationManager.requestWhenInUseAuthorization()
+        
+        if CLLocationManager.locationServicesEnabled(){
+            locationManager.delegate = self
+            locationManager.desiredAccuracy = kCLLocationAccuracyBest
+            locationManager.startUpdatingLocation()
 
         // Do any additional setup after loading the view.
     }
+    }
     
 
+    //responisble for obtaining and printing user current coordinates
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        let locValue:CLLocationCoordinate2D = manager.location!.coordinate
+        print("locations = \(locValue.latitude) \(locValue.longitude)")
+    }
     /*
     // MARK: - Navigation
 
