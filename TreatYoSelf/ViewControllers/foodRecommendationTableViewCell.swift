@@ -10,6 +10,10 @@ import UIKit
 
 class foodRecommendationTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var calorieCount: UILabel!
+    @IBOutlet weak var adressLabel: UILabel!
+    @IBOutlet weak var foodDetails: UILabel!
+    @IBOutlet weak var foodNameLabel: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
