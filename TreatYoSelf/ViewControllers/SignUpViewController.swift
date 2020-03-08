@@ -10,13 +10,25 @@ import UIKit
 
 class SignUpViewController: UIViewController {
 
+    @IBOutlet weak var goal_weight: UITextField!
+    @IBOutlet weak var gender: UITextField!
+    @IBOutlet weak var age: UITextField!
+    @IBOutlet weak var height_inch: UITextField!
+    @IBOutlet weak var current_weight: UITextField!
+    @IBOutlet weak var height_ft: UITextField!
+    @IBOutlet weak var goalCalorieFeild: UISegmentedControl!
+    @IBOutlet weak var passwordtextFeild: UITextField!
+    @IBOutlet weak var emailTextFeild: UITextField!
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
     }
     
-
+    @IBAction func onSignUp(_ sender: Any) {
+        performSegue(withIdentifier: "signupSegue", sender: nil)
+    }
+    
     /*
     // MARK: - Navigation
 

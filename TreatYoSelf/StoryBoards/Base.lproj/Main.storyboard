@@ -4,44 +4,41 @@
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
-        <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--Food Recomendations-->
         <scene sceneID="UjZ-dg-OPz">
             <objects>
-                <viewController id="aSd-GJ-3ew" sceneMemberID="viewController">
+                <viewController id="aSd-GJ-3ew" customClass="foodRecomendationViewController" customModule="TreatYoSelf" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Ugi-B4-pwg">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="G6o-k6-2Yj">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="WJR-Mc-CqZ">
+                                <rect key="frame" x="0.0" y="20" width="414" height="696"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Rk4-Nk-FdC">
-                                    <size key="itemSize" width="197" height="290"/>
-                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                </collectionViewFlowLayout>
-                                <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="DiD-pe-gb5">
-                                        <rect key="frame" x="0.0" y="0.0" width="197" height="290"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="xzM-c3-mco">
-                                            <rect key="frame" x="0.0" y="0.0" width="197" height="290"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="foodRecommendationTableViewCell" rowHeight="84" id="wYW-xz-IKu" customClass="foodRecommendationTableViewCell" customModule="TreatYoSelf" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="414" height="84"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="wYW-xz-IKu" id="EwT-7B-qjU">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="84"/>
                                             <autoresizingMask key="autoresizingMask"/>
-                                        </collectionViewCellContentView>
-                                        <size key="customSize" width="197" height="290"/>
+                                        </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="UVP-3Z-Lwx" kind="presentation" modalPresentationStyle="fullScreen" id="JxD-9F-08g"/>
+                                            <segue destination="UVP-3Z-Lwx" kind="presentation" modalPresentationStyle="fullScreen" modalTransitionStyle="coverVertical" id="zwb-iK-Qlg"/>
                                         </connections>
-                                    </collectionViewCell>
-                                </cells>
-                            </collectionView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
                         </subviews>
+                        <constraints>
+                            <constraint firstItem="WJR-Mc-CqZ" firstAttribute="trailing" secondItem="Nad-rB-6TG" secondAttribute="trailing" id="4M2-dy-DKZ"/>
+                            <constraint firstItem="WJR-Mc-CqZ" firstAttribute="leading" secondItem="Nad-rB-6TG" secondAttribute="leading" id="gKJ-e0-V89"/>
+                            <constraint firstAttribute="bottom" secondItem="WJR-Mc-CqZ" secondAttribute="bottom" constant="20" symbolic="YES" id="i1D-b1-0fo"/>
+                            <constraint firstItem="WJR-Mc-CqZ" firstAttribute="top" secondItem="Ugi-B4-pwg" secondAttribute="top" constant="20" symbolic="YES" id="otr-By-c79"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="Nad-rB-6TG"/>
                     </view>
                     <navigationItem key="navigationItem" title="Food Recomendations" id="LPW-gd-63J"/>
@@ -116,14 +113,6 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uTE-5N-Fuy">
-                                        <rect key="frame" x="174" y="110" width="66" height="30"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <state key="normal" title="Authorize"/>
-                                        <connections>
-                                            <action selector="onAuth:" destination="Z1F-lJ-IFK" eventType="touchUpInside" id="MsU-MY-HTT"/>
-                                        </connections>
-                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.88235294119999996" green="0.90980392160000001" blue="0.92941176469999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
@@ -147,7 +136,7 @@
                                 <rect key="frame" x="0.0" y="192.33333333333331" width="414" height="523.66666666666674"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="47" id="iJ6-UI-NI6">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="PersonalJournalTableViewCell" rowHeight="47" id="iJ6-UI-NI6" customClass="PersonalJournalTableViewCell" customModule="TreatYoSelf" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="414" height="47"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="iJ6-UI-NI6" id="gA2-lU-K3S">
@@ -184,6 +173,11 @@
                                         <constraints>
                                             <constraint firstItem="sWP-X9-4aI" firstAttribute="centerY" secondItem="iJ6-UI-NI6" secondAttribute="centerY" id="CZ1-PY-qgK"/>
                                         </constraints>
+                                        <connections>
+                                            <outlet property="calorieLabel" destination="sWP-X9-4aI" id="Tkc-MZ-F7v"/>
+                                            <outlet property="foodItemLabel" destination="EOE-ET-xCN" id="5xZ-eA-fP8"/>
+                                            <outlet property="timeLabel" destination="27Z-BE-cYd" id="6yU-tA-6oU"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
@@ -466,6 +460,9 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
                                 <state key="normal" title="SignUp"/>
+                                <connections>
+                                    <action selector="onSignUp:" destination="K9p-tb-pX0" eventType="touchUpInside" id="s0w-uo-IKE"/>
+                                </connections>
                             </button>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" fixedFrame="YES" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="YUH-aG-V7T">
                                 <rect key="frame" x="179" y="32" width="56" height="56"/>
@@ -482,6 +479,15 @@
                         <viewLayoutGuide key="safeArea" id="MtS-By-Vwi"/>
                     </view>
                     <connections>
+                        <outlet property="age" destination="EDc-NT-Wah" id="P1V-Oo-uZB"/>
+                        <outlet property="current_weight" destination="Xre-qY-MGA" id="Lvc-aB-XjW"/>
+                        <outlet property="emailTextFeild" destination="Qdi-RQ-YEU" id="N7n-wx-UnG"/>
+                        <outlet property="gender" destination="SOE-eO-NPI" id="MVD-e6-jhl"/>
+                        <outlet property="goalCalorieFeild" destination="1CD-WJ-UTa" id="CnG-zQ-ZyP"/>
+                        <outlet property="goal_weight" destination="yFb-T0-8kt" id="adu-J5-HhR"/>
+                        <outlet property="height_ft" destination="iPO-jx-Sbk" id="Gu4-r5-PEn"/>
+                        <outlet property="height_inch" destination="ybq-BK-cM3" id="OrT-O5-iy7"/>
+                        <outlet property="passwordtextFeild" destination="bPP-Ze-oD3" id="pR8-KE-EA0"/>
                         <segue destination="qDK-Jq-xMD" kind="presentation" identifier="signupSegue" modalPresentationStyle="fullScreen" modalTransitionStyle="coverVertical" id="UvZ-pN-d4k"/>
                     </connections>
                 </viewController>
