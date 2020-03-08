@@ -8,7 +8,9 @@
 
 import UIKit
 import HealthKit
-class FoodJournalViewController: UIViewController {
+import MapKit
+class FoodJournalViewController: UIViewController, CLLocationManagerDelegate{
+    var locationManager = CLLocationManager()
     
     @IBOutlet weak var calorieBurnt: UILabel!
     let healthStore = HKHealthStore()
@@ -17,6 +19,21 @@ class FoodJournalViewController: UIViewController {
         print("hey")
         //calorieBurnt.text = try healthStore.activeEnergyBurned()
         // Do any additional setup after loading the view.
+        
+        //location info
+        self.locationManager.requestWhenInUseAuthorization()
+        
+        if CLLocationManager.locationServicesEnabled(){
+            locationManager.delegate = self
+            locationManager.desiredAccuracy = kCLLocationAccuracyBest
+            locationManager.startUpdatingLocation()
+        }
+    }
+    
+    //responisble for obtaining and printing user current coordinates
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        let locValue:CLLocationCoordinate2D = manager.location!.coordinate
+        print("locations = \(locValue.latitude) \(locValue.longitude)")
     }
     
     @IBAction func onLogout(_ sender: Any) {
