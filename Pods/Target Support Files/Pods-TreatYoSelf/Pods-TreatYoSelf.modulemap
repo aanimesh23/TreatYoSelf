@@ -1,4 +1,4 @@
-framework module Pods_TreatYoSelf {
+module Pods_TreatYoSelf {
   umbrella header "Pods-TreatYoSelf-umbrella.h"
 
   export *

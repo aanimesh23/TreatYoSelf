@@ -1,4 +1,4 @@
-framework module Pods_TreatYoSelf_TreatYoSelfUITests {
+module Pods_TreatYoSelf_TreatYoSelfUITests {
   umbrella header "Pods-TreatYoSelf-TreatYoSelfUITests-umbrella.h"
 
   export *
