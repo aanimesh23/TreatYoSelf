@@ -608,15 +608,15 @@
                         <viewLayoutGuide key="safeArea" id="MtS-By-Vwi"/>
                     </view>
                     <connections>
+                        <outlet property="PasswordTextField" destination="bPP-Ze-oD3" id="qPo-af-JGb"/>
                         <outlet property="age" destination="EDc-NT-Wah" id="P1V-Oo-uZB"/>
                         <outlet property="current_weight" destination="Xre-qY-MGA" id="Lvc-aB-XjW"/>
-                        <outlet property="emailTextFeild" destination="Qdi-RQ-YEU" id="N7n-wx-UnG"/>
+                        <outlet property="emailTextField" destination="Qdi-RQ-YEU" id="DDi-tu-sWz"/>
                         <outlet property="gender" destination="SOE-eO-NPI" id="MVD-e6-jhl"/>
                         <outlet property="goalCalorieFeild" destination="1CD-WJ-UTa" id="CnG-zQ-ZyP"/>
-                        <outlet property="goal_weight" destination="yFb-T0-8kt" id="adu-J5-HhR"/>
+                        <outlet property="goalCalorieField" destination="yFb-T0-8kt" id="A3p-8X-zVV"/>
                         <outlet property="height_ft" destination="iPO-jx-Sbk" id="Gu4-r5-PEn"/>
                         <outlet property="height_inch" destination="ybq-BK-cM3" id="OrT-O5-iy7"/>
-                        <outlet property="passwordtextFeild" destination="bPP-Ze-oD3" id="pR8-KE-EA0"/>
                         <segue destination="qDK-Jq-xMD" kind="presentation" identifier="signupSegue" modalPresentationStyle="fullScreen" modalTransitionStyle="coverVertical" id="UvZ-pN-d4k"/>
                     </connections>
                 </viewController>
