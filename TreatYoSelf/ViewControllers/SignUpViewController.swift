@@ -16,10 +16,9 @@ class SignUpViewController: UIViewController {
     @IBOutlet weak var height_inch: UITextField!
     @IBOutlet weak var current_weight: UITextField!
     @IBOutlet weak var height_ft: UITextField!
-    @IBOutlet weak var goalCalorieField: UITextField!
-    @IBOutlet weak var PasswordTextField: UITextField!
-    @IBOutlet weak var emailTextField: UITextField!
-    
+    @IBOutlet weak var goalCalorieFeild: UISegmentedControl!
+    @IBOutlet weak var passwordtextFeild: UITextField!
+    @IBOutlet weak var emailTextFeild: UITextField!
     override func viewDidLoad() {
         super.viewDidLoad()
 
