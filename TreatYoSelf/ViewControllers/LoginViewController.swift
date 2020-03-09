@@ -7,7 +7,7 @@
 //
 
 import UIKit
-
+import Parse
 class LoginViewController: UIViewController {
 
     @IBOutlet weak var loginButton: UIButton!
@@ -20,8 +20,24 @@ class LoginViewController: UIViewController {
         
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        if UserDefaults.standard.bool(forKey: "logedIn") == true {
+            self.performSegue(withIdentifier: "loginSegue", sender: nil)
+        }
+    }
+    
     @IBAction func onLogin(_ sender: Any) {
-        performSegue(withIdentifier: "loginSegue", sender: nil)
+        PFUser.logInWithUsername(inBackground: emailTextField.text!, password: passwordTextField.text!) { (user, error) in
+            if user != nil {
+                UserDefaults.standard.set(true, forKey: "logedIn")
+                self.performSegue(withIdentifier: "loginSegue", sender: nil)
+            }
+            else {
+                print("Error \(error)")
+            }
+        }
+        
+        
     }
     
     /*

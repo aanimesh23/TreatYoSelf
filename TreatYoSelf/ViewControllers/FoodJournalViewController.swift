@@ -8,6 +8,7 @@
 
 import UIKit
 import HealthKit
+import Parse
 class FoodJournalViewController: UIViewController {
     
     @IBOutlet weak var calorieBurnt: UILabel!
@@ -20,6 +21,10 @@ class FoodJournalViewController: UIViewController {
     }
     
     @IBAction func onLogout(_ sender: Any) {
+        UserDefaults.standard.set(false, forKey: "logedIn")
+        PFUser.logOutInBackground { (error) in
+            print(error)
+        }
         self.dismiss(animated: true, completion: nil)
     }
     @IBAction func onAuth(_ sender: Any) {

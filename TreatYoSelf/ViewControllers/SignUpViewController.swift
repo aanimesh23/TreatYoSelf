@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Parse
 
 class SignUpViewController: UIViewController {
 
@@ -26,7 +27,29 @@ class SignUpViewController: UIViewController {
     }
     
     @IBAction func onSignUp(_ sender: Any) {
-        performSegue(withIdentifier: "signupSegue", sender: nil)
+        let user = PFUser()
+        let goal = [1000, 1200, 1500, 2000]
+        user.password = passwordtextFeild.text
+        user.email = emailTextFeild.text
+        user.username = emailTextFeild.text
+        user["daily_goal"] = goal[goalCalorieFeild.selectedSegmentIndex]
+        user["height_ft"] = height_ft.text
+        user["height_in"] = height_inch.text
+        
+        user["weight"] = current_weight.text
+        user["goal_weight"] = goal_weight.text
+        user["gender"] = gender.text
+        user["age"] = age.text
+        
+        user.signUpInBackground { (success, error) in
+            if success {
+                UserDefaults.standard.set(true, forKey: "logedIn")
+                self.performSegue(withIdentifier: "signupSegue", sender: nil)
+            }
+            else {
+                print("Error occored \(error)")
+            }
+        }
     }
     
     /*
