@@ -8,7 +8,7 @@
 
 import UIKit
 import Parse
-class LoginViewController: UIViewController {
+class LoginViewController: UIViewController, UITextFieldDelegate {
 
     @IBOutlet weak var loginButton: UIButton!
     @IBOutlet weak var passwordTextField: UITextField!
@@ -16,8 +16,13 @@ class LoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        let Tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(DismissKeyboard))
+        view.addGestureRecognizer(Tap)
         
-        
+    }
+    @objc func DismissKeyboard()
+    {
+        view.endEditing(true)
     }
     
     override func viewDidAppear(_ animated: Bool) {
