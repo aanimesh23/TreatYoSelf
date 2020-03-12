@@ -237,6 +237,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="calorieBurnt" destination="1Ym-ot-Kw1" id="rY0-oK-kjb"/>
+                        <outlet property="consumedCalorieLabel" destination="H4n-fl-Yma" id="nCS-zh-pAk"/>
                         <outlet property="journalTable" destination="vIi-ph-vJD" id="HDT-I2-EKK"/>
                     </connections>
                 </viewController>

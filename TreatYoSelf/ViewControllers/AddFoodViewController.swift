@@ -24,11 +24,21 @@ class AddFoodViewController: UIViewController {
     }
     
     @IBAction func onSubmit(_ sender: Any) {
-        print("trying to submit")
+        let date = Date()
+        let calendar = Calendar.current
+        let hour = calendar.component(.hour, from: date)
+        let minutes = calendar.component(.minute, from: date)
+        let day = calendar.component(.day, from: date)
+        let month = calendar.component(.month, from: date)
+        let timeLabel = String(format: "%02d/%02d %02d:%02d", month, day, hour, minutes)
+        
         let foodJournalObject = PFObject(className:"FoodJournalObject")
         foodJournalObject["calorie"] = CalorieField.text as! String
         foodJournalObject["name"] = FoodNameField.text as! String
         foodJournalObject["user"] = PFUser.current()
+        foodJournalObject["time"] = timeLabel
+        foodJournalObject["month"] = month
+        foodJournalObject["day"] = day
         foodJournalObject.saveInBackground { (succeeded, error)  in
             if (succeeded) {
                 // The object has been saved.
