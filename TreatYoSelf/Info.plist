@@ -18,6 +18,14 @@
 	<string>1.0</string>
 	<key>CFBundleVersion</key>
 	<string>1</string>
+	<key>LSRequiresIPhoneOS</key>
+	<true/>
+	<key>NSHealthShareUsageDescription</key>
+	<string>Your workout related data will be used to display your saved workouts in SpeedySloth.</string>
+	<key>NSHealthUpdateUsageDescription</key>
+	<string>Workouts tracked by SpeedySloth on Apple Watch will be saved to HealthKit.</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>GIVE ME LOCATION PLS</string>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationSupportsMultipleScenes</key>
@@ -37,12 +45,6 @@
 			</array>
 		</dict>
 	</dict>
-	<key>LSRequiresIPhoneOS</key>
-	<true/>
-	<key>NSHealthShareUsageDescription</key>
-	<string>Your workout related data will be used to display your saved workouts in SpeedySloth.</string>
-	<key>NSHealthUpdateUsageDescription</key>
-	<string>Workouts tracked by SpeedySloth on Apple Watch will be saved to HealthKit.</string>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>
@@ -64,7 +66,5 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
-	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>GIVE ME LOCATION PLS</string>
 </dict>
 </plist>

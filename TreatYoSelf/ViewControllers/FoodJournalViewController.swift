@@ -10,6 +10,7 @@ import UIKit
 import HealthKit
 import Parse
 class FoodJournalViewController: UIViewController {
+    @IBOutlet weak var journalTable: UITableView!
     
     @IBOutlet weak var calorieBurnt: UILabel!
     let healthStore = HKHealthStore()
@@ -18,6 +19,11 @@ class FoodJournalViewController: UIViewController {
         print("hey")
         //calorieBurnt.text = try healthStore.activeEnergyBurned()
         // Do any additional setup after loading the view.
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
     }
     
     @IBAction func onLogout(_ sender: Any) {

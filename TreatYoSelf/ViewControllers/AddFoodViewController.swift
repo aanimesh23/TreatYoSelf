@@ -19,6 +19,7 @@ class AddFoodViewController: UIViewController {
     }
     
     @IBAction func onBackButton(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
     }
     
     @IBAction func onSubmit(_ sender: Any) {

@@ -9,26 +9,60 @@
 import UIKit
 import HealthKit
 import MapKit
+import Parse
 
-class foodRecomendationViewController: UIViewController, CLLocationManagerDelegate {
+class foodRecomendationViewController: UIViewController, CLLocationManagerDelegate, UITableViewDelegate, UITableViewDataSource
+{
+    
+    @IBOutlet weak var foodRecTable: UITableView!
+    var menuItems = [Any]()
     var locationManager = CLLocationManager()
     
-    override func viewDidLoad() {
+    override func viewDidLoad()
+    {
         super.viewDidLoad()
         
-        //location info
+        //request location from user
         self.locationManager.requestWhenInUseAuthorization()
         
-        if CLLocationManager.locationServicesEnabled(){
+        if CLLocationManager.locationServicesEnabled()
+        {
             locationManager.delegate = self
             locationManager.desiredAccuracy = kCLLocationAccuracyBest
             locationManager.startUpdatingLocation()
 
         // Do any additional setup after loading the view.
-    }
+        }
+        
+        //Deals with gathering info from Parse data base
+        let query = PFQuery(className: "menuItem")
+        query.findObjectsInBackground { (objects, error) in
+            if error == nil
+            {
+                //no error in data fetch
+                
+                if let returnedObjects = objects
+                {
+                    //objects array isnt nil
+                    for object in returnedObjects
+                    {
+                        //currently prints names of all menuItems
+                        self.menuItems.append(object )
+                    }
+                }
+            }
+        }
     }
     
-
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return self.menuItems.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = self.foodRecTable.dequeueReusableCell(withIdentifier: "foodRecommendationTableViewCell", for: indexPath) as! foodRecommendationTableViewCell
+        return cell
+        
+    }
     //responisble for obtaining and printing user current coordinates
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         let locValue:CLLocationCoordinate2D = manager.location!.coordinate
