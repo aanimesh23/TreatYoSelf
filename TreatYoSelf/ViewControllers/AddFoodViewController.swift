@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Parse
 
 class AddFoodViewController: UIViewController {
 
@@ -23,6 +24,20 @@ class AddFoodViewController: UIViewController {
     }
     
     @IBAction func onSubmit(_ sender: Any) {
+        print("trying to submit")
+        let foodJournalObject = PFObject(className:"FoodJournalObject")
+        foodJournalObject["calorie"] = CalorieField.text as! String
+        foodJournalObject["name"] = FoodNameField.text as! String
+        foodJournalObject["user"] = PFUser.current()
+        foodJournalObject.saveInBackground { (succeeded, error)  in
+            if (succeeded) {
+                // The object has been saved.
+                self.dismiss(animated: true, completion: nil)
+            } else {
+                // There was a problem, check error.description
+            }
+        }
+        
     }
     /*
     // MARK: - Navigation
