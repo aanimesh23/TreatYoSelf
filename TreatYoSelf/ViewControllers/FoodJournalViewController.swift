@@ -24,15 +24,14 @@ class FoodJournalViewController: UIViewController, UITableViewDelegate, UITableV
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("hey")
-        
         //Making the image a circle
         userImage.layer.masksToBounds = false
         userImage.layer.cornerRadius = userImage.frame.height/2
         userImage.clipsToBounds = true
+        
         journalTable.delegate = self
         journalTable.dataSource = self
-        //calorieBurnt.text = try healthStore.activeEnergyBurned()
+        
         // Do any additional setup after loading the view.
     }
     
@@ -74,6 +73,7 @@ class FoodJournalViewController: UIViewController, UITableViewDelegate, UITableV
             self.consumedCalorieLabel.text =  c
             self.calorieBurnt.text = d
             }
+            self.log = self.log.reversed()
         }
     }
     func calculateCaloriesBurned() -> Double{
@@ -132,10 +132,8 @@ class FoodJournalViewController: UIViewController, UITableViewDelegate, UITableV
         cell.timeLabel.text = log[indexPath.row]["time"] as! String
         cell.calorieLabel.text = log[indexPath.row]["calorie"] as! String
         cell.foodItemLabel.text = log[indexPath.row]["name"] as! String
-        print(log[indexPath.row])
         return cell
     }
-    
     
     /*
     // MARK: - Navigation
