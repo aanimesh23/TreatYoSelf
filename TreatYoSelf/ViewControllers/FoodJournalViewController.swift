@@ -19,12 +19,14 @@ class FoodJournalViewController: UIViewController, UITableViewDelegate, UITableV
     var log = [PFObject]()
     
     let healthStore = HKHealthStore()
+    var totalSteps = 0
+    private let StepCountQuantityType = HKQuantityType.quantityType(forIdentifier: .stepCount)!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         print("hey")
         
         //Making the image a circle
-        
         userImage.layer.masksToBounds = false
         userImage.layer.cornerRadius = userImage.frame.height/2
         userImage.clipsToBounds = true
@@ -37,6 +39,27 @@ class FoodJournalViewController: UIViewController, UITableViewDelegate, UITableV
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        requestAuth()
+        var steps = [HKQuantitySample]()
+        let stepsCount = HKQuantityType.quantityType(
+            forIdentifier: .stepCount)!
+         
+        let stepsSampleQuery = HKSampleQuery(sampleType: stepsCount,
+            predicate: nil,
+            limit: 100,
+            sortDescriptors: nil)
+            { [unowned self] (query, results, error) in
+                if let results = results as? [HKQuantitySample] {
+                    steps = results
+                    for step in results {
+                        let numberOfSteps = Int(step.quantity.doubleValue(for: HKUnit.count()))
+                        self.totalSteps += numberOfSteps
+                    }
+                }
+        }
+         
+        // Don't forget to execute the Query!
+        healthStore.execute(stepsSampleQuery)
         let query = PFQuery(className: "FoodJournalObject")
         query.whereKey("user", equalTo: PFUser.current())
         query.limit = 20
@@ -46,11 +69,16 @@ class FoodJournalViewController: UIViewController, UITableViewDelegate, UITableV
             self.log = log!
             self.journalTable.reloadData()
             let c:String = String(format:"%.0f", self.calculateCalorieConsumed())
+            let d:String = String(format:"-%.0f", self.calculateCaloriesBurned())
             self.consumedCalorieLabel.text =  c
+            self.calorieBurnt.text = d
             }
+        }
     }
+    func calculateCaloriesBurned() -> Double{
+        let val = Double(self.totalSteps) * 0.063
+        return Double(val)
     }
-    
     func calculateCalorieConsumed() -> Double{
         let date = Date()
         let calendar = Calendar.current
@@ -73,25 +101,27 @@ class FoodJournalViewController: UIViewController, UITableViewDelegate, UITableV
         }
         self.dismiss(animated: true, completion: nil)
     }
-    @IBAction func onAuth(_ sender: Any) {
-        requestAuth()
-    }
+    
     func requestAuth()
     {
-        let readType = Set([
-        HKObjectType.quantityType(forIdentifier: .activeEnergyBurned)!])
+        print("Clicked! and Here")
+        let readType = Set([StepCountQuantityType])
+        let shareType = Set([StepCountQuantityType])
         
         if !HKHealthStore.isHealthDataAvailable() {
             print("Came here")
             return
-        
         }
-        healthStore.requestAuthorization(toShare: readType, read: readType) { (success, error) in
-        if !success {
-            print("Error: \(String(describing: error))")
-        }
+        healthStore.requestAuthorization(toShare: shareType, read: readType) { (success, error) in
+            if !success {
+                print("error!!! \(error)")
+            } else {
+                print("Success")
+            }
+            
         }
     }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return log.count
     }
