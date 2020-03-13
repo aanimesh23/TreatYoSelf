@@ -43,9 +43,10 @@ class FoodJournalViewController: UIViewController, UITableViewDelegate, UITableV
         var steps = [HKQuantitySample]()
         let stepsCount = HKQuantityType.quantityType(
             forIdentifier: .stepCount)!
-         
+        let today = Date()
+        let pridicate = HKQuery.predicateForSamples(withStart: today, end: today, options: HKQueryOptions.strictStartDate)
         let stepsSampleQuery = HKSampleQuery(sampleType: stepsCount,
-            predicate: nil,
+            predicate: pridicate,
             limit: 100,
             sortDescriptors: nil)
             { [unowned self] (query, results, error) in
