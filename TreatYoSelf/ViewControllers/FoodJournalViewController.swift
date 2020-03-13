@@ -14,6 +14,7 @@ class FoodJournalViewController: UIViewController, UITableViewDelegate, UITableV
     @IBOutlet weak var consumedCalorieLabel: UILabel!
     @IBOutlet weak var journalTable: UITableView!
     
+    @IBOutlet weak var userImage: UIImageView!
     @IBOutlet weak var calorieBurnt: UILabel!
     var log = [PFObject]()
     
@@ -22,12 +23,18 @@ class FoodJournalViewController: UIViewController, UITableViewDelegate, UITableV
         super.viewDidLoad()
         print("hey")
         
+        //Making the image a circle
+        
+        userImage.layer.masksToBounds = false
+        userImage.layer.cornerRadius = userImage.frame.height/2
+        userImage.clipsToBounds = true
         journalTable.delegate = self
         journalTable.dataSource = self
         //calorieBurnt.text = try healthStore.activeEnergyBurned()
         // Do any additional setup after loading the view.
     }
     
+
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         let query = PFQuery(className: "FoodJournalObject")
@@ -41,7 +48,7 @@ class FoodJournalViewController: UIViewController, UITableViewDelegate, UITableV
             let c:String = String(format:"%.0f", self.calculateCalorieConsumed())
             self.consumedCalorieLabel.text =  c
             }
-        }
+    }
     }
     
     func calculateCalorieConsumed() -> Double{
@@ -97,10 +104,12 @@ class FoodJournalViewController: UIViewController, UITableViewDelegate, UITableV
         print(log[indexPath.row])
         return cell
     }
+    
+    
     /*
     // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
+
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
