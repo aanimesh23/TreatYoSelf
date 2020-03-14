@@ -23,27 +23,26 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
     override func viewDidLoad() {
         super.viewDidLoad()
         print("Loaded")
-        let query = PFQuery(className: "User_Image")
-        query.includeKey("author")
-        query.whereKey("author", equalTo: PFUser.current())
-        query.limit = 1
-        
-        query.findObjectsInBackground { (img, error) in
-            print("here")
-            if img != nil {
-                self.image = img!
-                self.image.reversed()
-                let img1 = self.image[0]
-                let imagefile = img1["image"] as! PFFileObject
-                let urlstring = imagefile.url!
-                let url = URL(string: urlstring)!
-                print(url)
-                self.profileImage.af_setImage(withURL: url)
-            }
-            else {
-                print(error)
-            }
-        }
+//        let query = PFQuery(className: "User_Image")
+//        query.includeKey("author")
+//        query.whereKey("author", equalTo: PFUser.current())
+//        query.limit = 1
+//
+//        query.findObjectsInBackground { (img, error) in
+//            print("here")
+//            if img != nil {
+//                self.image = img!
+//                let img1 = self.image[0]
+//                let imagefile = img1["image"] as! PFFileObject
+//                let urlstring = imagefile.url!
+//                let url = URL(string: urlstring)!
+//                print(url)
+//                self.profileImage.af_setImage(withURL: url)
+//            }
+//            else {
+//                print(error)
+//            }
+//        }
         // Do any additional setup after loading the view.
     }
     override func viewDidAppear(_ animated: Bool) {
