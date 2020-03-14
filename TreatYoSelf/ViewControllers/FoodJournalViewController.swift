@@ -21,7 +21,7 @@ class FoodJournalViewController: UIViewController, UITableViewDelegate, UITableV
     let healthStore = HKHealthStore()
     var totalSteps = 0
     private let StepCountQuantityType = HKQuantityType.quantityType(forIdentifier: .stepCount)!
-    
+    var image = [PFObject]()
     override func viewDidLoad() {
         super.viewDidLoad()
         //Making the image a circle
@@ -31,8 +31,6 @@ class FoodJournalViewController: UIViewController, UITableViewDelegate, UITableV
         
         journalTable.delegate = self
         journalTable.dataSource = self
-        
-        // Do any additional setup after loading the view.
     }
     
 
@@ -43,7 +41,9 @@ class FoodJournalViewController: UIViewController, UITableViewDelegate, UITableV
         let stepsCount = HKQuantityType.quantityType(
             forIdentifier: .stepCount)!
         let today = Date()
-        let pridicate = HKQuery.predicateForSamples(withStart: today, end: today, options: HKQueryOptions.strictStartDate)
+        let cal = Calendar(identifier: Calendar.Identifier.gregorian)
+        let start = cal.startOfDay(for: today)
+        let pridicate = HKQuery.predicateForSamples(withStart: start, end: today, options: HKQueryOptions.strictStartDate)
         let stepsSampleQuery = HKSampleQuery(sampleType: stepsCount,
             predicate: pridicate,
             limit: 100,
@@ -75,6 +75,7 @@ class FoodJournalViewController: UIViewController, UITableViewDelegate, UITableV
             }
             self.log = self.log.reversed()
         }
+        
     }
     func calculateCaloriesBurned() -> Double{
         let val = Double(self.totalSteps) * 0.063

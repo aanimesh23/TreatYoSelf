@@ -22,6 +22,7 @@
 		228433D023F4AD0D0039677C /* FoodJournalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 228433CF23F4AD0D0039677C /* FoodJournalViewController.swift */; };
 		22B1CEA72412D3BB00A99CA4 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B1CEA62412D3BB00A99CA4 /* LoginViewController.swift */; };
 		22B839FB2415BADA00FACBDA /* AddFoodViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B839FA2415BADA00FACBDA /* AddFoodViewController.swift */; };
+		22D4A0E0241C51FF008FEA33 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D4A0DF241C51FE008FEA33 /* ProfileViewController.swift */; };
 		54D2913A7DAB20B673372EAE /* libPods-TreatYoSelf-TreatYoSelfUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D84F8F4FD152A25A8BB8410 /* libPods-TreatYoSelf-TreatYoSelfUITests.a */; };
 		584AE2F28820A6CCF3392895 /* libPods-TreatYoSelfTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1646FC89253E5ED87B78CEAE /* libPods-TreatYoSelfTests.a */; };
 		BD1894B1F1D01042B92B1B4B /* libPods-TreatYoSelf.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E5D7AE52D5ADF5871D476C6C /* libPods-TreatYoSelf.a */; };
@@ -68,6 +69,7 @@
 		228433CF23F4AD0D0039677C /* FoodJournalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodJournalViewController.swift; sourceTree = "<group>"; };
 		22B1CEA62412D3BB00A99CA4 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		22B839FA2415BADA00FACBDA /* AddFoodViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddFoodViewController.swift; sourceTree = "<group>"; };
+		22D4A0DF241C51FE008FEA33 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		34E535210B9FB8DED97A25BC /* Pods-TreatYoSelf.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TreatYoSelf.debug.xcconfig"; path = "Target Support Files/Pods-TreatYoSelf/Pods-TreatYoSelf.debug.xcconfig"; sourceTree = "<group>"; };
 		49B2323BA9270AF67C674C70 /* Pods-TreatYoSelf-TreatYoSelfUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TreatYoSelf-TreatYoSelfUITests.debug.xcconfig"; path = "Target Support Files/Pods-TreatYoSelf-TreatYoSelfUITests/Pods-TreatYoSelf-TreatYoSelfUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		4A8FE6E180E2D51C8FC551B9 /* Pods-TreatYoSelf-TreatYoSelfUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TreatYoSelf-TreatYoSelfUITests.release.xcconfig"; path = "Target Support Files/Pods-TreatYoSelf-TreatYoSelfUITests/Pods-TreatYoSelf-TreatYoSelfUITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -168,6 +170,7 @@
 				227E41162415A0BD00B09A9A /* foodRecomendationViewController.swift */,
 				227E41182415A11100B09A9A /* foodRecommendationTableViewCell.swift */,
 				22B839FA2415BADA00FACBDA /* AddFoodViewController.swift */,
+				22D4A0DF241C51FE008FEA33 /* ProfileViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -455,6 +458,7 @@
 			files = (
 				227E41192415A11100B09A9A /* foodRecommendationTableViewCell.swift in Sources */,
 				22B1CEA72412D3BB00A99CA4 /* LoginViewController.swift in Sources */,
+				22D4A0E0241C51FF008FEA33 /* ProfileViewController.swift in Sources */,
 				2252A84C23EDEFAA004BAB19 /* AppDelegate.swift in Sources */,
 				228433D023F4AD0D0039677C /* FoodJournalViewController.swift in Sources */,
 				22B839FB2415BADA00FACBDA /* AddFoodViewController.swift in Sources */,
