@@ -23,32 +23,47 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
     override func viewDidLoad() {
         super.viewDidLoad()
         print("Loaded")
-//        let query = PFQuery(className: "User_Image")
-//        query.includeKey("author")
-//        query.whereKey("author", equalTo: PFUser.current())
-//        query.limit = 1
-//
-//        query.findObjectsInBackground { (img, error) in
-//            print("here")
-//            if img != nil {
-//                self.image = img!
-//                let img1 = self.image[0]
-//                let imagefile = img1["image"] as! PFFileObject
-//                let urlstring = imagefile.url!
-//                let url = URL(string: urlstring)!
-//                print(url)
-//                self.profileImage.af_setImage(withURL: url)
-//            }
-//            else {
-//                print(error)
-//            }
-//        }
+        
+        profileImage.layer.masksToBounds = false
+        profileImage.layer.cornerRadius = profileImage.frame.height/2
+        profileImage.clipsToBounds = true
+        
+        let query = PFQuery(className: "User_Image")
+        query.includeKey("author")
+        query.whereKey("author", equalTo: PFUser.current())
+        query.limit = 1
+
+        query.findObjectsInBackground { (img, error) in
+            print("here")
+            if img != nil {
+                self.image = img!
+                let img1 = self.image[0]
+                let imagefile = img1["image"] as! PFFileObject
+                let urlstring = imagefile.url!
+                let url = URL(string: urlstring)!
+                print(url)
+                self.profileImage.af_setImage(withURL: url)
+            }
+            else {
+                print(error)
+            }
+        }
         // Do any additional setup after loading the view.
     }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         print("Appearing")
-        
+        let user = PFUser.current()
+        print(user!["age"])
+        NameLabel.text = user!["username"] as! String
+        genderLabel.text = user!["gender"] as! String
+        ageLabel.text = user?["age"] as! String
+        weightLabel.text = user?["weight"] as! String
+        let height_ft = user?["height_ft"] as! String
+        let height_in = user?["height_in"] as! String
+        let hlabel = "\(height_ft)' \(height_in)"
+        heightLabel.text = hlabel
+       dailyGoalLabel.text = "\(user?["daily_goal"] as! Int)"
     }
     @IBAction func onImageTap(_ sender: Any) {
         let picker = UIImagePickerController()
@@ -71,6 +86,7 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
         let userImage = PFObject(className: "User_Image")
         let imageData = profileImage.image!.pngData()!
         let file = PFFileObject(name: "image.png", data: imageData)
+        
         
         userImage["image"] = file
         userImage["author"] = PFUser.current()
