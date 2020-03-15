@@ -22,6 +22,7 @@ class FoodJournalViewController: UIViewController, UITableViewDelegate, UITableV
     var totalSteps = 0
     private let StepCountQuantityType = HKQuantityType.quantityType(forIdentifier: .stepCount)!
     var image = [PFObject]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         //Making the image a circle
@@ -33,7 +34,6 @@ class FoodJournalViewController: UIViewController, UITableViewDelegate, UITableV
         journalTable.dataSource = self
     }
     
-
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         requestAuth()

@@ -15,12 +15,15 @@ class foodRecomendationViewController: UIViewController, CLLocationManagerDelega
 {
     
     @IBOutlet weak var foodRecTable: UITableView!
-    var menuItems = [Any]()
+    var log = [PFObject]()
     var locationManager = CLLocationManager()
     
     override func viewDidLoad()
     {
         super.viewDidLoad()
+        
+        foodRecTable.delegate = self
+        foodRecTable.dataSource = self
         
         //request location from user
         self.locationManager.requestWhenInUseAuthorization()
@@ -33,33 +36,34 @@ class foodRecomendationViewController: UIViewController, CLLocationManagerDelega
 
         // Do any additional setup after loading the view.
         }
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
         
-        //Deals with gathering info from Parse data base
         let query = PFQuery(className: "menuItem")
-        query.findObjectsInBackground { (objects, error) in
-            if error == nil
-            {
-                //no error in data fetch
-                
-                if let returnedObjects = objects
-                {
-                    //objects array isnt nil
-                    for object in returnedObjects
-                    {
-                        //currently prints names of all menuItems
-                        self.menuItems.append(object )
-                    }
-                }
+        query.limit = 20
+        
+        query.findObjectsInBackground { (log, error) in
+        if log != nil {
+            self.log = log!
+            self.foodRecTable.reloadData()
             }
+            print(self.log)
         }
+        
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.menuItems.count
+        return self.log.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = self.foodRecTable.dequeueReusableCell(withIdentifier: "foodRecommendationTableViewCell", for: indexPath) as! foodRecommendationTableViewCell
+        cell.adressLabel.text = log[indexPath.row]["itemAddress"] as! String
+        cell.calorieCount.text = log[indexPath.row]["itemCalorie"] as? String
+        cell.foodNameLabel.text = log[indexPath.row]["itemName"] as! String
+        cell.foodDetails.text = log[indexPath.row]["itemDescription"] as! String
         return cell
         
     }
