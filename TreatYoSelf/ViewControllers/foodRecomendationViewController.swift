@@ -24,6 +24,8 @@ class foodRecomendationViewController: UIViewController, CLLocationManagerDelega
         
         foodRecTable.delegate = self
         foodRecTable.dataSource = self
+        foodRecTable.estimatedRowHeight = 150
+//        foodRecTable.rowHeight = 150
         
         //request location from user
         self.locationManager.requestWhenInUseAuthorization()
@@ -60,8 +62,9 @@ class foodRecomendationViewController: UIViewController, CLLocationManagerDelega
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = self.foodRecTable.dequeueReusableCell(withIdentifier: "foodRecommendationTableViewCell", for: indexPath) as! foodRecommendationTableViewCell
+        var calorie = "\(log[indexPath.row]["itemCalorie"] as! Int)"
         cell.adressLabel.text = log[indexPath.row]["itemAddress"] as! String
-        cell.calorieCount.text = log[indexPath.row]["itemCalorie"] as? String
+        cell.calorieCount.text = calorie as! String
         cell.foodNameLabel.text = log[indexPath.row]["itemName"] as! String
         cell.foodDetails.text = log[indexPath.row]["itemDescription"] as! String
         return cell
