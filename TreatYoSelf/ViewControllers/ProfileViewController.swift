@@ -22,7 +22,6 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
     var image = [PFObject]()
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("Loaded")
         
         profileImage.layer.masksToBounds = false
         profileImage.layer.cornerRadius = profileImage.frame.height/2
@@ -34,14 +33,12 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
         query.limit = 1
 
         query.findObjectsInBackground { (img, error) in
-            print("here")
             if img != nil {
                 self.image = img!
                 let img1 = self.image[0]
                 let imagefile = img1["image"] as! PFFileObject
                 let urlstring = imagefile.url!
                 let url = URL(string: urlstring)!
-                print(url)
                 self.profileImage.af_setImage(withURL: url)
             }
             else {
@@ -52,9 +49,7 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
     }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        print("Appearing")
         let user = PFUser.current()
-        print(user!["age"])
         NameLabel.text = user!["username"] as! String
         genderLabel.text = user!["gender"] as! String
         ageLabel.text = user?["age"] as! String

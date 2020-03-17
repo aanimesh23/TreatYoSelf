@@ -22,8 +22,8 @@ class foodRecomendationViewController: UIViewController, CLLocationManagerDelega
     var curr_loc = CLLocationCoordinate2D()
     var distances = [PFObject:Double]()
     var sorted_items = [(key: PFObject, value: Double)]()
-    var calorie_Consumed: String = ""
-    
+    var calorie_Consumed: Double = 0.0
+    var food_items = [PFObject]()
     override func viewDidLoad()
     {
         super.viewDidLoad()
@@ -49,10 +49,10 @@ class foodRecomendationViewController: UIViewController, CLLocationManagerDelega
         query.findObjectsInBackground { (log, error) in
         if log != nil {
             self.log = log!
-            self.foodRecTable.reloadData()
-            }
             for item in self.log {
                 self.get_address_distance(address: item["itemAddress"] as! String, objectId: item)
+            }
+            self.foodRecTable.reloadData()
             }
         }
     }
@@ -61,9 +61,8 @@ class foodRecomendationViewController: UIViewController, CLLocationManagerDelega
         super.viewDidAppear(animated)
         self.foodRecTable.reloadData()
         let vc = FoodJournalViewController()
-        let calories_consumed = vc.calculateCalorieConsumed()
-        self.calorie_Consumed = String(format:"%.0f", calories_consumed)
-        print(self.calorie_Consumed)
+        self.calorie_Consumed = vc.calculateCalorieConsumed()
+        self.calorie_filter()
     }
     func get_address_distance(address: String, objectId: PFObject){
         var distance = Double()
@@ -106,17 +105,29 @@ class foodRecomendationViewController: UIViewController, CLLocationManagerDelega
         return sqrt(((x2 - x1) * (x2 - x1)) + ((y2 - y1) * (y2 - y1)))
     }
     
+    func calorie_filter() {
+        let user = PFUser.current()
+        let goal = Double(user?["daily_goal"] as! Int)
+        for item in self.sorted_items {
+            let food_item = item.key
+            var calorie = Double(food_item["itemCalorie"] as! Int)
+            if (calorie + self.calorie_Consumed) < goal {
+                self.food_items.append(food_item)
+            }
+            else {
+                print(item)
+            }
+        }
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.sorted_items.count
+        return self.food_items.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = self.foodRecTable.dequeueReusableCell(withIdentifier: "foodRecommendationTableViewCell", for: indexPath) as! foodRecommendationTableViewCell
         
-//        print(self.sorted_items[indexPath.row])
-        let temp = self.sorted_items[indexPath.row]
-        let food_item = temp.key
-//        print(food_item)
+        let food_item = self.food_items[indexPath.row]
         var calorie = "\(food_item["itemCalorie"] as! Int)"
         cell.adressLabel.text = food_item["itemAddress"] as! String
         cell.calorieCount.text = calorie as! String

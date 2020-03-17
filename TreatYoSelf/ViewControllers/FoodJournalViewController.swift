@@ -123,12 +123,10 @@ class FoodJournalViewController: UIViewController, UITableViewDelegate, UITableV
     
     func requestAuth()
     {
-        print("Clicked! and Here")
         let readType = Set([StepCountQuantityType])
         let shareType = Set([StepCountQuantityType])
         
         if !HKHealthStore.isHealthDataAvailable() {
-            print("Came here")
             return
         }
         healthStore.requestAuthorization(toShare: shareType, read: readType) { (success, error) in
