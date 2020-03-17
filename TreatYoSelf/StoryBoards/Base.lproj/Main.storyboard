@@ -560,10 +560,10 @@
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="1CD-WJ-UTa">
                                 <rect key="frame" x="20" y="298" width="374" height="32"/>
                                 <segments>
-                                    <segment title="1000"/>
-                                    <segment title="1200"/>
                                     <segment title="1500"/>
+                                    <segment title="1700"/>
                                     <segment title="2000"/>
+                                    <segment title="3000"/>
                                 </segments>
                             </segmentedControl>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Height" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ral-gE-N4l">
@@ -847,6 +847,6 @@
         <image name="square.and.pencil" catalog="system" width="64" height="58"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="sBO-kp-fgp"/>
+        <segue reference="UvZ-pN-d4k"/>
     </inferredMetricsTieBreakers>
 </document>

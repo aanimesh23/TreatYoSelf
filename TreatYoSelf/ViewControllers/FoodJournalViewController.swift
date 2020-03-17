@@ -22,6 +22,7 @@ class FoodJournalViewController: UIViewController, UITableViewDelegate, UITableV
     var totalSteps = 0
     private let StepCountQuantityType = HKQuantityType.quantityType(forIdentifier: .stepCount)!
     var image = [PFObject]()
+    var calories_burned: String = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -77,8 +78,24 @@ class FoodJournalViewController: UIViewController, UITableViewDelegate, UITableV
         }
         
     }
+    func get_calorie_burned() -> String {
+        return self.calories_burned
+    }
     func calculateCaloriesBurned() -> Double{
-        let val = Double(self.totalSteps) * 0.063
+        let step_cal = Double(self.totalSteps) * 0.063
+        var avg_day = 0.0
+        let user = PFUser.current()
+        if user!["gender"] as! String == "M" {
+            avg_day = 66.0 + (6.2 * Double(user!["weight"] as! String)!)
+            avg_day = avg_day  + (12.7 * Double(user!["height_ft"] as! String)! * 12.0)
+            avg_day = avg_day  - (6.76 * Double(user!["age"] as! String)!)
+        }
+        if user!["gender"] as! String == "F" {
+            avg_day = 655.1 + (4.35 * Double(user!["weight"] as! String)!)
+            avg_day = avg_day  + (4.7 * Double(user!["height_ft"] as! String)! * 12.0)
+            avg_day = avg_day  - (4.7 * Double(user!["age"] as! String)!)
+        }
+        let val = step_cal + avg_day
         return Double(val)
     }
     func calculateCalorieConsumed() -> Double{
@@ -136,14 +153,15 @@ class FoodJournalViewController: UIViewController, UITableViewDelegate, UITableV
         return cell
     }
     
-    /*
+    
     // MARK: - Navigation
 
 
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//        let barViewControllers = segue.destination as! UITabBarController
+//        let destinationViewController = barViewControllers.viewControllers?[1] as! foodRecomendationViewController
+//        destinationViewController.calorie_Burened = self.calorieBurnt.text!
+//    }
+
 
 }

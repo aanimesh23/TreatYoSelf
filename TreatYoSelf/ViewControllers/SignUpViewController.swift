@@ -34,7 +34,7 @@ class SignUpViewController: UIViewController {
     
     @IBAction func onSignUp(_ sender: Any) {
         let user = PFUser()
-        let goal = [1000, 1200, 1500, 2000]
+        let goal = [1500, 17000, 2000, 3000]
         user.password = passwordtextFeild.text
         user.email = emailTextFeild.text
         user.username = emailTextFeild.text
