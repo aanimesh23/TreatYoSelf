@@ -17,12 +17,14 @@ class foodRecomendationViewController: UIViewController, CLLocationManagerDelega
     //
     @IBOutlet weak var foodRecTable: UITableView!
     var log = [PFObject]()
+    var foodConsumed = [PFObject]()
     var locationManager = CLLocationManager()
     var location_data = [[String:Any]]()
     var curr_loc = CLLocationCoordinate2D()
     var distances = [PFObject:Double]()
     var sorted_items = [(key: PFObject, value: Double)]()
     var calorie_Consumed: Double = 0.0
+    var calorie_burned: Double = 0.0
     var food_items = [PFObject]()
     override func viewDidLoad()
     {
@@ -61,7 +63,8 @@ class foodRecomendationViewController: UIViewController, CLLocationManagerDelega
         super.viewDidAppear(animated)
         self.foodRecTable.reloadData()
         let vc = FoodJournalViewController()
-        self.calorie_Consumed = vc.calculateCalorieConsumed()
+        self.calorie_burned = vc.calculateCaloriesBurned()
+        self.calculateCaloriesConsumed()
         self.calorie_filter()
     }
     func get_address_distance(address: String, objectId: PFObject){
@@ -101,23 +104,49 @@ class foodRecomendationViewController: UIViewController, CLLocationManagerDelega
          task.resume()
     }
     
+    func calculateCaloriesConsumed(){
+        let query = PFQuery(className: "FoodJournalObject")
+        query.whereKey("user", equalTo: PFUser.current())
+        query.limit = 20
+        
+        query.findObjectsInBackground { (log, error) in
+        if log != nil {
+            self.foodConsumed = log!
+        }
+        
+            let date = Date()
+            let calendar = Calendar.current
+            let day = calendar.component(.day, from: date)
+            let month = calendar.component(.month, from: date)
+            var total = 0.0
+        
+            for object in self.foodConsumed{
+            if object["month"] as! Int == month && object["day"] as! Int == day{
+                total += (object["calorie"] as! NSString).doubleValue
+            }
+        }
+            self.calorie_Consumed = total
+    }
+    }
     func distance_between(x1: Double, y1: Double, x2: Double, y2: Double) -> Double {
         return sqrt(((x2 - x1) * (x2 - x1)) + ((y2 - y1) * (y2 - y1)))
     }
     
     func calorie_filter() {
+        self.food_items = [PFObject]()
         let user = PFUser.current()
         let goal = Double(user?["daily_goal"] as! Int)
         for item in self.sorted_items {
             let food_item = item.key
             var calorie = Double(food_item["itemCalorie"] as! Int)
-            if (calorie + self.calorie_Consumed) < goal {
+            if (calorie + self.calorie_Consumed - self.calorie_burned) < goal {
                 self.food_items.append(food_item)
             }
             else {
                 print(item)
             }
         }
+        self.foodRecTable.reloadData()
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

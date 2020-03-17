@@ -9,6 +9,8 @@
 import UIKit
 import HealthKit
 import Parse
+import AlamofireImage
+
 class FoodJournalViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     @IBOutlet weak var consumedCalorieLabel: UILabel!
@@ -30,6 +32,25 @@ class FoodJournalViewController: UIViewController, UITableViewDelegate, UITableV
         userImage.layer.masksToBounds = false
         userImage.layer.cornerRadius = userImage.frame.height/2
         userImage.clipsToBounds = true
+        
+        let query = PFQuery(className: "User_Image")
+        query.includeKey("author")
+        query.whereKey("author", equalTo: PFUser.current())
+        query.limit = 1
+
+        query.findObjectsInBackground { (img, error) in
+            if img != nil {
+                self.image = img!
+                let img1 = self.image[0]
+                let imagefile = img1["image"] as! PFFileObject
+                let urlstring = imagefile.url!
+                let url = URL(string: urlstring)!
+                self.userImage.af_setImage(withURL: url)
+            }
+            else {
+                print(error)
+            }
+        }
         
         journalTable.delegate = self
         journalTable.dataSource = self
@@ -88,11 +109,13 @@ class FoodJournalViewController: UIViewController, UITableViewDelegate, UITableV
         if user!["gender"] as! String == "M" {
             avg_day = 66.0 + (6.2 * Double(user!["weight"] as! String)!)
             avg_day = avg_day  + (12.7 * Double(user!["height_ft"] as! String)! * 12.0)
+            avg_day = avg_day + (12.7 * Double(user!["height_in"] as! String)!)
             avg_day = avg_day  - (6.76 * Double(user!["age"] as! String)!)
         }
         if user!["gender"] as! String == "F" {
             avg_day = 655.1 + (4.35 * Double(user!["weight"] as! String)!)
             avg_day = avg_day  + (4.7 * Double(user!["height_ft"] as! String)! * 12.0)
+            avg_day = avg_day + (4.7 * Double(user!["height_in"] as! String)!)
             avg_day = avg_day  - (4.7 * Double(user!["age"] as! String)!)
         }
         let val = step_cal + avg_day
