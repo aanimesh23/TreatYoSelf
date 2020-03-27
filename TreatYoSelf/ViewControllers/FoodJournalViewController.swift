@@ -59,6 +59,7 @@ class FoodJournalViewController: UIViewController, UITableViewDelegate, UITableV
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         requestAuth()
+        self.totalSteps = 0
         var steps = [HKQuantitySample]()
         let stepsCount = HKQuantityType.quantityType(
             forIdentifier: .stepCount)!
